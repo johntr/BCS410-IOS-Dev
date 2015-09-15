@@ -36,15 +36,18 @@
                                 <rect key="frame" x="210" y="225" width="203" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textDidChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="1A4-dT-640"/>
+                                </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSa-cZ-gcR">
-                                <rect key="frame" x="274" y="287" width="53" height="25"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pMu-4n-wQl">
+                                <rect key="frame" x="228" y="287" width="144" height="25"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Add">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="addMessageAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qRT-Re-xSG"/>
+                                    <action selector="adddeleteMessageAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jCN-RO-LmF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -52,6 +55,7 @@
                     </view>
                     <connections>
                         <outlet property="mainOutlet" destination="vnk-mK-BHP" id="9Zs-Ta-uyy"/>
+                        <outlet property="messageButton" destination="pMu-4n-wQl" id="BX4-S3-KzT"/>
                         <outlet property="newTextInput" destination="5r3-KF-27y" id="uuB-nU-qMk"/>
                     </connections>
                 </viewController>

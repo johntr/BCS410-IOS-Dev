@@ -12,6 +12,8 @@ class ToggleViewController: UIViewController {
 
     @IBOutlet weak var mainOutlet: UILabel!
     @IBOutlet weak var newTextInput: UITextField!
+    @IBOutlet weak var messageButton: UIButton!
+    
     var toggleModel = ToggleModel()
     
     override func viewDidLoad() {
@@ -31,10 +33,23 @@ class ToggleViewController: UIViewController {
         mainOutlet.text = toggleModel.getMessage()
     }
 
-    @IBAction func addMessageAction(sender: UIButton) {
-
+    @IBAction func adddeleteMessageAction(sender: UIButton) {
+        if messageButton.titleLabel?.text == "Delete" {
+            toggleModel.deleteMessage(newTextInput.text)
+        }
+        else {
             toggleModel.addMessage(newTextInput.text)
-            newTextInput.text = ""
+        }
+        newTextInput.text = ""
+        textDidChange(newTextInput)
+    }
+    @IBAction func textDidChange(sender: UITextField) {
+        if toggleModel.isMessagesPresent(sender.text) {
+            messageButton.setTitle("Delete", forState: .Normal)
+        }
+        else {
+            messageButton.setTitle("Add", forState: .Normal)
+        }
     }
     
     /*

@@ -25,7 +25,17 @@ class ToggleModel {
         if !messages.isEmpty {
             messages.append(m)
         }
-        
-        
+    }
+    
+    func isMessagesPresent(m: String)->Bool {
+        return find(messages, m) != nil
+    }
+    
+    func deleteMessage(m: String) {
+        if let index = find(messages, m) {
+            if messages.count > 1 {
+                messages.removeAtIndex(index)
+            }
+        }
     }
 }
