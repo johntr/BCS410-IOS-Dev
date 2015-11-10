@@ -9,20 +9,25 @@
 import UIKit
 
 class DealerTableViewController: UITableViewController {
-
+    
+    var Dealers : DealerLoader?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        Dealers = DealerLoader(url:"http://app-adc.gotpantheon.com/api/v1/dealers/10027")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
+        
     }
 
     // MARK: - Table view data source
@@ -36,16 +41,21 @@ class DealerTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 8
+        return Dealers!.Dealersten.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("DealerTableViewCellReuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
 
         // Configure the cell...
         if let myCell = cell as? DealerTableViewCell {
-            myCell.cellTitle.text = "test"
+
+            myCell.cellTitle.text = Dealers?.Dealersten[indexPath.row].Name
+            if let distance = Dealers?.Dealersten[indexPath.row].distance {
+                myCell.detailTextLabel!.text = "\(distance) Miles"
+            }
 
             return myCell
         }
