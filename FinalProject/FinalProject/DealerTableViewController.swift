@@ -14,7 +14,7 @@ class DealerTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Dealers = DealerLoader(url:"http://app-adc.gotpantheon.com/api/v1/dealers/10027")
+        Dealers = DealerLoader(url:"http://app-adc.gotpantheon.com/api/v1/dealers/90210")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -41,7 +41,7 @@ class DealerTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return Dealers!.Dealersten.count
+        return Dealers!.Dealers.count
     }
 
     
@@ -52,8 +52,8 @@ class DealerTableViewController: UITableViewController {
         // Configure the cell...
         if let myCell = cell as? DealerTableViewCell {
 
-            myCell.cellTitle.text = Dealers?.Dealersten[indexPath.row].Name
-            if let distance = Dealers?.Dealersten[indexPath.row].distance {
+            myCell.cellTitle.text = Dealers?.Dealers[indexPath.row].Name
+            if let distance = Dealers?.Dealers[indexPath.row].distance {
                 myCell.detailTextLabel!.text = "\(distance) Miles"
             }
 

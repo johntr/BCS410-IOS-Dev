@@ -10,9 +10,8 @@ import Foundation
 import SwiftyJSON
 
 class DealerLoader {
-    var Dealerstwentyfive = [Dealer] ()
-    var Dealersfifty = [Dealer] ()
-    var Dealersten = [Dealer] ()
+
+    var Dealers = [Dealer] ()
     var data : JSON?
     
     
@@ -41,12 +40,12 @@ class DealerLoader {
         }
     }
     
+
     private func parseDealers() {
-        var i = 0
         for(key: String, distances: JSON) in self.data! {
-            if key == "ten" {
-                for(key1: String, distance: JSON) in distances {
-                    Dealersten.append(Dealer(
+            for(key1: String, distance: JSON) in distances {
+                if checkDupDealers(distance["name"].stringValue) {
+                    Dealers.append(Dealer(
                         Name: distance["name"].stringValue,
                         address1: distance["addr1"].stringValue,
                         address2: distance["addr2"].stringValue,
@@ -58,27 +57,23 @@ class DealerLoader {
                         long: distance["long"].doubleValue,
                         distance: distance["distance"].doubleValue
                         ))
-                    i++
                 }
             }
-            if key == "twentyfive" {
-                for(key1: String, distance: JSON) in distances {
-                    for(key2: String, info: JSON) in distance {
-                        
-                    }
-                    i++
-                }
-            }
-            if key == "fifty" {
-                for(key1: String, distance: JSON) in distances {
-                    for(key2: String, info: JSON) in distance {
-                        
-                    }
-                    i++
-                }
-            }
-
         }
     }
     
+    func checkDupDealers(dealerName : String)->Bool {
+        if Dealers.count > 0 {
+            for dealer in Dealers {
+                //println(dealer)
+                if dealer.Name == dealerName {
+                    return false
+                }
+            }
+            return true
+        }
+        else {
+            return true
+        }
+    }
 }
