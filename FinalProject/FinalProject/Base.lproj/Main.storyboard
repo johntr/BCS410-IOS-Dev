@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Dealer Map View Controller-->
         <scene sceneID="Nhv-3Q-YIg">
             <objects>
-                <viewController id="SEo-EX-qG4" sceneMemberID="viewController">
+                <viewController id="SEo-EX-qG4" customClass="DealerMapViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NJc-ya-2Xe"/>
                         <viewControllerLayoutGuide type="bottom" id="XkP-S9-yfu"/>
@@ -31,10 +31,13 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="MMl-i3-yKe" id="98I-27-3gp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rNn-mR-UIW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1540" y="542"/>
+            <point key="canvasLocation" x="1572" y="584"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="nGe-fZ-dDx">
@@ -47,19 +50,22 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DealerTableViewCellReuseIdentifier" textLabel="OBn-SH-nSk" detailTextLabel="jhw-pb-2Hs" style="IBUITableViewCellStyleValue1" id="aHt-r2-Dhj" customClass="DealerTableViewCell" customModule="FinalProject" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aHt-r2-Dhj" id="0Aw-c5-rzu">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OBn-SH-nSk">
+                                            <rect key="frame" x="15" y="12" width="31.5" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jhw-pb-2Hs">
+                                            <rect key="frame" x="543.5" y="12" width="41.5" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -72,7 +78,7 @@
                                 <animations/>
                                 <connections>
                                     <outlet property="cellTitle" destination="OBn-SH-nSk" id="P8z-7z-ksA"/>
-                                    <segue destination="SEo-EX-qG4" kind="show" id="vLe-sP-KrD"/>
+                                    <segue destination="SEo-EX-qG4" kind="show" identifier="selectedDealerSegue" id="SMD-DC-7VR"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

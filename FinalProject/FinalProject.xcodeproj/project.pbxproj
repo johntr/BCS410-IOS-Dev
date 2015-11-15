@@ -10,8 +10,12 @@
 		18386A5AE75637C36BEA0E37 /* Pods_FinalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9520B4BDDC685CCA4B002468 /* Pods_FinalProject.framework */; };
 		52315D4A1BF1002500277C5A /* DealerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52315D491BF1002500277C5A /* DealerModel.swift */; };
 		52315D4C1BF1091900277C5A /* DealerLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52315D4B1BF1091900277C5A /* DealerLoader.swift */; };
+		525F49E81BF3CCDE008F3F17 /* DealerMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525F49E71BF3CCDE008F3F17 /* DealerMapViewController.swift */; };
 		527420901BEE645300EE8514 /* DealerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5274208F1BEE645300EE8514 /* DealerTableViewController.swift */; };
 		527420921BEE670200EE8514 /* DealerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527420911BEE670200EE8514 /* DealerTableViewCell.swift */; };
+		52C9C4B51BF8314C00E3C9CE /* Hauppauge.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 52C9C4B41BF8314C00E3C9CE /* Hauppauge.gpx */; };
+		52C9C4B61BF8321600E3C9CE /* DealerLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52315D4B1BF1091900277C5A /* DealerLoader.swift */; };
+		52C9C4B71BF8321900E3C9CE /* DealerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52315D491BF1002500277C5A /* DealerModel.swift */; };
 		52CC80E81BE3BA3600FB958A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CC80E71BE3BA3600FB958A /* AppDelegate.swift */; };
 		52CC80EA1BE3BA3600FB958A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CC80E91BE3BA3600FB958A /* ViewController.swift */; };
 		52CC80ED1BE3BA3600FB958A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52CC80EB1BE3BA3600FB958A /* Main.storyboard */; };
@@ -35,8 +39,10 @@
 		2FCB833EB480A3B27FEFE76D /* Pods-FinalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinalProject/Pods-FinalProject.debug.xcconfig"; sourceTree = "<group>"; };
 		52315D491BF1002500277C5A /* DealerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealerModel.swift; sourceTree = "<group>"; };
 		52315D4B1BF1091900277C5A /* DealerLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealerLoader.swift; sourceTree = "<group>"; };
+		525F49E71BF3CCDE008F3F17 /* DealerMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealerMapViewController.swift; sourceTree = "<group>"; };
 		5274208F1BEE645300EE8514 /* DealerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealerTableViewController.swift; sourceTree = "<group>"; };
 		527420911BEE670200EE8514 /* DealerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealerTableViewCell.swift; sourceTree = "<group>"; };
+		52C9C4B41BF8314C00E3C9CE /* Hauppauge.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Hauppauge.gpx; sourceTree = "<group>"; };
 		52CC80E21BE3BA3600FB958A /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52CC80E61BE3BA3600FB958A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52CC80E71BE3BA3600FB958A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +106,7 @@
 		52CC80E41BE3BA3600FB958A /* FinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				525F49E71BF3CCDE008F3F17 /* DealerMapViewController.swift */,
 				527420911BEE670200EE8514 /* DealerTableViewCell.swift */,
 				5274208F1BEE645300EE8514 /* DealerTableViewController.swift */,
 				52CC80E71BE3BA3600FB958A /* AppDelegate.swift */,
@@ -110,6 +117,7 @@
 				52CC80E51BE3BA3600FB958A /* Supporting Files */,
 				52315D491BF1002500277C5A /* DealerModel.swift */,
 				52315D4B1BF1091900277C5A /* DealerLoader.swift */,
+				52C9C4B41BF8314C00E3C9CE /* Hauppauge.gpx */,
 			);
 			path = FinalProject;
 			sourceTree = "<group>";
@@ -195,11 +203,17 @@
 		52CC80DA1BE3BA3600FB958A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "John Redlich";
 				TargetAttributes = {
 					52CC80E11BE3BA3600FB958A = {
 						CreatedOnToolsVersion = 6.4;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					52CC80F61BE3BA3600FB958A = {
 						CreatedOnToolsVersion = 6.4;
@@ -233,6 +247,7 @@
 			files = (
 				52CC80ED1BE3BA3600FB958A /* Main.storyboard in Resources */,
 				52CC80F21BE3BA3600FB958A /* LaunchScreen.xib in Resources */,
+				52C9C4B51BF8314C00E3C9CE /* Hauppauge.gpx in Resources */,
 				52CC80EF1BE3BA3600FB958A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +319,7 @@
 				52315D4A1BF1002500277C5A /* DealerModel.swift in Sources */,
 				52315D4C1BF1091900277C5A /* DealerLoader.swift in Sources */,
 				52CC80E81BE3BA3600FB958A /* AppDelegate.swift in Sources */,
+				525F49E81BF3CCDE008F3F17 /* DealerMapViewController.swift in Sources */,
 				527420901BEE645300EE8514 /* DealerTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,6 +329,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				52CC80FE1BE3BA3600FB958A /* FinalProjectTests.swift in Sources */,
+				52C9C4B71BF8321900E3C9CE /* DealerModel.swift in Sources */,
+				52C9C4B61BF8321600E3C9CE /* DealerLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

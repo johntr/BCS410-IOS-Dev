@@ -7,22 +7,33 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
-class DealerTableViewController: UITableViewController {
+class DealerTableViewController: UITableViewController, CLLocationManagerDelegate {
     
     var Dealers : DealerLoader?
+    var selectedDealer : Dealer?
+    
+    let location = CLLocationManager()
+    var zip :String = "11788"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Dealers = DealerLoader(url:"http://app-adc.gotpantheon.com/api/v1/dealers/90210")
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        location.delegate = self
+        location.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        location.requestWhenInUseAuthorization()
+        location.startUpdatingLocation()
+        
+        
         
     }
-
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -41,7 +52,7 @@ class DealerTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return Dealers!.Dealers.count
+        return 8//return Dealers!.Dealers.count
     }
 
     
@@ -51,7 +62,6 @@ class DealerTableViewController: UITableViewController {
 
         // Configure the cell...
         if let myCell = cell as? DealerTableViewCell {
-
             myCell.cellTitle.text = Dealers?.Dealers[indexPath.row].Name
             if let distance = Dealers?.Dealers[indexPath.row].distance {
                 myCell.detailTextLabel!.text = "\(distance) Miles"
@@ -62,6 +72,16 @@ class DealerTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let selectedDealer = Dealers?.Dealers[indexPath.row]
+        //let destinationVC = DealerMapViewController()
+        //destinationVC.selectedDealer = selectedDealer
+        
+        self.selectedDealer = selectedDealer
+        //performSegueWithIdentifier("selectedDealerSegue", sender: self)
+    
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -97,15 +117,56 @@ class DealerTableViewController: UITableViewController {
         return true
     }
     */
-
-    /*
+    
+    // MARK: - Location Management
+    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: {(placemarks, error)-> Void in
+            if error != nil {
+                println("Reverse geocoder failed with error: \(error.localizedDescription)")
+                return
+            }
+            
+            if placemarks.count > 0 {
+                let placemark = placemarks[0] as! CLPlacemark
+                self.location.stopUpdatingLocation()
+                self.loadDealers(placemark)
+                
+            }else{
+                println("No placemarks found.")
+            }
+        })
+    }
+    
+    func loadDealers(placemark: CLPlacemark){
+        zip = (placemark.postalCode != nil) ? placemark.postalCode : ""
+        //println("Postal code updated to: \(self.zip)")
+        Dealers = DealerLoader(url:"http://app-adc.gotpantheon.com/api/v1/dealers/\(self.zip)")
+        
+        if Dealers != nil {
+            tableView.reloadData()
+        } else {
+            println("No Dealers Loaded" )
+        }
+        
+    }
+    
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+        println("Error: \(error.localizedDescription)")
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "selectedDealerSegue" {
+            var viewController = segue.destinationViewController as! DealerMapViewController
+            viewController.selectedDealer = self.selectedDealer
+        }
     }
-    */
+    
 
 }
