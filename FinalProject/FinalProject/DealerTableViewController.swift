@@ -16,7 +16,7 @@ class DealerTableViewController: UITableViewController, CLLocationManagerDelegat
     var selectedDealer : Dealer?
     
     let location = CLLocationManager()
-    var zip :String = "11788"
+    var zip :String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +62,7 @@ class DealerTableViewController: UITableViewController, CLLocationManagerDelegat
 
         // Configure the cell...
         if let myCell = cell as? DealerTableViewCell {
-            myCell.cellTitle.text = Dealers?.Dealers[indexPath.row].Name
+            myCell.cellTitle.text = Dealers?.Dealers[indexPath.row].title
             if let distance = Dealers?.Dealers[indexPath.row].distance {
                 myCell.detailTextLabel!.text = "\(distance) Miles"
             }
@@ -71,52 +71,6 @@ class DealerTableViewController: UITableViewController, CLLocationManagerDelegat
         }
         return cell
     }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        let selectedDealer = Dealers?.Dealers[indexPath.row]
-        //let destinationVC = DealerMapViewController()
-        //destinationVC.selectedDealer = selectedDealer
-        
-        self.selectedDealer = selectedDealer
-        //performSegueWithIdentifier("selectedDealerSegue", sender: self)
-    
-    }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
     
     // MARK: - Location Management
     
@@ -163,8 +117,10 @@ class DealerTableViewController: UITableViewController, CLLocationManagerDelegat
         // Pass the selected object to the new view controller.
         
         if segue.identifier == "selectedDealerSegue" {
+            let selectedCell = self.tableView.indexPathForCell(sender as! UITableViewCell)
+            let selectedDealer = Dealers?.Dealers[selectedCell!.row]
             var viewController = segue.destinationViewController as! DealerMapViewController
-            viewController.selectedDealer = self.selectedDealer
+            viewController.selectedDealer = selectedDealer
         }
     }
     

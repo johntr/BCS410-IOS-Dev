@@ -7,10 +7,13 @@
 //
 
 import Foundation
+import MapKit
+import AddressBook
 
-class Dealer {
+class Dealer: NSObject{
     
-    let Name : String?
+    let title : String!
+    let subtitle: String!
     let address1 : String?
     let address2 : String?
     let address3 : String?
@@ -20,11 +23,12 @@ class Dealer {
     let lat : Double?
     let long : Double?
     var distance : Double?
-    
+
     
     init(Name : String, address1 : String, address2 : String?, address3 : String?, city : String, state : String, zip : String, lat : Double, long : Double, distance : Double) {
         
-        self.Name = Name
+        self.title = Name
+
         self.address1 = address1
         if let address2unwrapped = address2 {
             self.address2 = address2unwrapped
@@ -44,6 +48,17 @@ class Dealer {
         self.lat = lat
         self.long = long
         self.distance = distance
-        
+        //self.subtitle = "/* \(address1) \n \(city), \(state)  \(zip) \n About \(distance) Miles away."
+        self.subtitle = "About \(distance) Miles away."
     }
+    /*
+    func mapItem() -> MKMapItem {
+        let addressDictionary = [String(kABPersonAddressStreetKey): subtitle]
+        let placemark = MKPlacemark(coordinate: coordinate!, addressDictionary: addressDictionary)
+        
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = title
+        
+        return mapItem
+    } */
 }

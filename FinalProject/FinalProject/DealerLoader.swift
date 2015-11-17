@@ -31,7 +31,7 @@ class DealerLoader {
     private func getDealerData(url : String) {
         //load data from url param
         var endpoint = NSURL(string: url)
-        println(url)
+        //println(url)
         var data = NSData(contentsOfURL : endpoint!)
         //Make it JSON data and pass it to SwiftyJSON to work with
         if let json: NSDictionary = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSDictionary {
@@ -67,7 +67,7 @@ class DealerLoader {
         if Dealers.count > 0 {
             for dealer in Dealers {
                 //println(dealer)
-                if dealer.Name == dealerName {
+                if dealer.title == dealerName {
                     return false
                 }
             }

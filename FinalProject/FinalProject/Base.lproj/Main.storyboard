@@ -39,7 +39,7 @@
             </objects>
             <point key="canvasLocation" x="1572" y="584"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Your Local Dealers-->
         <scene sceneID="nGe-fZ-dDx">
             <objects>
                 <tableViewController id="JMK-Pe-YMn" customClass="DealerTableViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -87,7 +87,18 @@
                             <outlet property="delegate" destination="JMK-Pe-YMn" id="bqp-qF-zBw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="d1B-mc-RyX"/>
+                    <navigationItem key="navigationItem" title="Your Local Dealers" id="d1B-mc-RyX">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="N9K-eL-sZ6">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="L0c-n7-Owk">
+                                <rect key="frame" x="-23" y="-15" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <state key="normal" title="Menu">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Vv-xz-I8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
