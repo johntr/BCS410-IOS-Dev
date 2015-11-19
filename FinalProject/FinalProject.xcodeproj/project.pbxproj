@@ -22,6 +22,7 @@
 		52CC80EF1BE3BA3600FB958A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52CC80EE1BE3BA3600FB958A /* Images.xcassets */; };
 		52CC80F21BE3BA3600FB958A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52CC80F01BE3BA3600FB958A /* LaunchScreen.xib */; };
 		52CC80FE1BE3BA3600FB958A /* FinalProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CC80FD1BE3BA3600FB958A /* FinalProjectTests.swift */; };
+		52D6D9FD1BFBF37B0080A3CC /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6D9FC1BFBF37B0080A3CC /* PopoverViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		52CC80F71BE3BA3600FB958A /* FinalProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinalProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52CC80FC1BE3BA3600FB958A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52CC80FD1BE3BA3600FB958A /* FinalProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalProjectTests.swift; sourceTree = "<group>"; };
+		52D6D9FC1BFBF37B0080A3CC /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		9520B4BDDC685CCA4B002468 /* Pods_FinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -106,6 +108,7 @@
 		52CC80E41BE3BA3600FB958A /* FinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				52D6D9FC1BFBF37B0080A3CC /* PopoverViewController.swift */,
 				525F49E71BF3CCDE008F3F17 /* DealerMapViewController.swift */,
 				527420911BEE670200EE8514 /* DealerTableViewCell.swift */,
 				5274208F1BEE645300EE8514 /* DealerTableViewController.swift */,
@@ -314,6 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52D6D9FD1BFBF37B0080A3CC /* PopoverViewController.swift in Sources */,
 				527420921BEE670200EE8514 /* DealerTableViewCell.swift in Sources */,
 				52CC80EA1BE3BA3600FB958A /* ViewController.swift in Sources */,
 				52315D4A1BF1002500277C5A /* DealerModel.swift in Sources */,

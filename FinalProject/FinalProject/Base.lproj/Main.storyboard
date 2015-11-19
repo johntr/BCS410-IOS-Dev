@@ -39,10 +39,59 @@
             </objects>
             <point key="canvasLocation" x="1572" y="584"/>
         </scene>
+        <!--Popover View Controller-->
+        <scene sceneID="D4j-5L-w2U">
+            <objects>
+                <viewController storyboardIdentifier="idPopoverViewController" id="ZIW-Mm-12V" customClass="PopoverViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2gD-QX-ttm"/>
+                        <viewControllerLayoutGuide type="bottom" id="JV7-0J-z5J"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xEN-lJ-RPx">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="80"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Zip" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Zx-LS-0oV">
+                                <rect key="frame" x="16" y="23" width="25" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7ax-e4-g3R">
+                                <rect key="frame" x="54" y="20" width="126" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qB-r6-T0X">
+                                <rect key="frame" x="92" y="50" width="51" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Update">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="updateZip:" destination="ZIW-Mm-12V" eventType="touchUpInside" id="kt4-Zp-SK7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="200" height="80"/>
+                    <connections>
+                        <outlet property="zipField" destination="7ax-e4-g3R" id="doy-2U-hEE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sPZ-ke-ucK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="852" y="100"/>
+        </scene>
         <!--Your Local Dealers-->
         <scene sceneID="nGe-fZ-dDx">
             <objects>
-                <tableViewController id="JMK-Pe-YMn" customClass="DealerTableViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="mainViewController" id="JMK-Pe-YMn" customClass="DealerTableViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9cI-Ta-cBG">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -88,26 +137,24 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Your Local Dealers" id="d1B-mc-RyX">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="N9K-eL-sZ6">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="L0c-n7-Owk">
-                                <rect key="frame" x="-23" y="-15" width="133" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <animations/>
-                                <state key="normal" title="Menu">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" title="Update Zip" id="ZVy-k4-VWQ">
+                            <connections>
+                                <action selector="menuUpdateZip:" destination="JMK-Pe-YMn" id="tbT-pL-9ml"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="menuButton" destination="ZVy-k4-VWQ" id="n5k-gN-TIL"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Vv-xz-I8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="656" y="572"/>
+            <point key="canvasLocation" x="652" y="530"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XXS-ic-ojU">
             <objects>
-                <navigationController id="344-AJ-bnM" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNavController" id="344-AJ-bnM" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CdZ-z6-39O">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -10,7 +10,9 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class DealerTableViewController: UITableViewController, CLLocationManagerDelegate {
+class DealerTableViewController: UITableViewController, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
+    
+    var domain = "app-adc.gotpantheon.com"
     
     var Dealers : DealerLoader?
     var selectedDealer : Dealer?
@@ -18,15 +20,17 @@ class DealerTableViewController: UITableViewController, CLLocationManagerDelegat
     let location = CLLocationManager()
     var zip :String = ""
     
+    @IBOutlet weak var menuButton: UIBarButtonItem!
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadDealers:",name:"load", object: nil)
         
         location.delegate = self
         location.desiredAccuracy = kCLLocationAccuracyHundredMeters
         location.requestWhenInUseAuthorization()
         location.startUpdatingLocation()
-        
-        
         
     }
     
@@ -36,9 +40,7 @@ class DealerTableViewController: UITableViewController, CLLocationManagerDelegat
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-        
-        
+    
     }
 
     // MARK: - Table view data source
@@ -52,7 +54,12 @@ class DealerTableViewController: UITableViewController, CLLocationManagerDelegat
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 8//return Dealers!.Dealers.count
+        if let count = Dealers {
+            return count.Dealers.count
+        } else {
+            return 0
+        }
+        
     }
 
     
@@ -84,29 +91,63 @@ class DealerTableViewController: UITableViewController, CLLocationManagerDelegat
             if placemarks.count > 0 {
                 let placemark = placemarks[0] as! CLPlacemark
                 self.location.stopUpdatingLocation()
-                self.loadDealers(placemark)
+                let defaultZip = ["Zip" : (placemark.postalCode != nil) ? placemark.postalCode : ""]
                 
+                NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil, userInfo: defaultZip)
             }else{
                 println("No placemarks found.")
             }
         })
     }
     
-    func loadDealers(placemark: CLPlacemark){
-        zip = (placemark.postalCode != nil) ? placemark.postalCode : ""
-        //println("Postal code updated to: \(self.zip)")
-        Dealers = DealerLoader(url:"http://app-adc.gotpantheon.com/api/v1/dealers/\(self.zip)")
+    func loadDealers(param: NSNotification){
+
+        if let paramZip = param.userInfo as? Dictionary<String, String!> {
+            self.zip = paramZip["Zip"]!
+            Dealers = DealerLoader(url:"http://\(self.domain)/api/v1/dealers/\(self.zip)")
+            
+        } else {
+            println("No zip found in Notification")
+        }
         
+        self.reloadTable()
+        
+    }
+    
+    func reloadTable() {
         if Dealers != nil {
-            tableView.reloadData()
+            self.tableView.reloadData()
+
         } else {
             println("No Dealers Loaded" )
         }
-        
     }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
         println("Error: \(error.localizedDescription)")
+    }
+    
+    // MARK: - Popover
+    
+    @IBAction func menuUpdateZip(sender: AnyObject) {
+
+        var popoverViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("idPopoverViewController") as? PopoverViewController
+        
+        popoverViewController?.modalPresentationStyle = UIModalPresentationStyle.Popover
+        
+        popoverViewController?.popoverPresentationController?.delegate = self
+
+        self.presentViewController(popoverViewController!, animated: true, completion: nil)
+        
+        popoverViewController?.popoverPresentationController?.barButtonItem = menuButton
+        popoverViewController?.popoverPresentationController?.permittedArrowDirections = .Any
+        popoverViewController?.preferredContentSize = CGSizeMake(200.0, 80.0)
+        
+
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
     }
     
     // MARK: - Navigation
