@@ -11,12 +11,7 @@ import MapKit
 
 class DealerMapViewController: UIViewController {
 
-    var selectedDealer : Dealer? {
-        didSet {
-            println(selectedDealer?.long!)
-        }
-    }
-
+    var selectedDealer : Dealer?
     let regionRadius: CLLocationDistance = 1000
     
     @IBOutlet weak var mapView: MKMapView!
@@ -49,19 +44,8 @@ class DealerMapViewController: UIViewController {
     }
     
     func centerMapOnLocation(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-            regionRadius * 2.0, regionRadius * 2.0)
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

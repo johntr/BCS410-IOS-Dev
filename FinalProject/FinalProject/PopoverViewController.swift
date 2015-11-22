@@ -31,20 +31,10 @@ class PopoverViewController: UIViewController {
        
         var tmpController :UIViewController! = self.presentingViewController;
         self.dismissViewControllerAnimated(false, completion: {()->Void in
-            println("done");
+            //println("done");
             tmpController.dismissViewControllerAnimated(false, completion: nil);
         });
 
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

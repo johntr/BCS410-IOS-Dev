@@ -10,7 +10,11 @@ import UIKit
 
 class DealerTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var cellTitle: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
+    
+    @IBOutlet weak var distanceLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -22,10 +22,13 @@ class DealerTableViewController: UITableViewController, CLLocationManagerDelegat
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
 
+    @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadDealers:",name:"load", object: nil)
+        
+        activitySpinner.startAnimating()
         
         location.delegate = self
         location.desiredAccuracy = kCLLocationAccuracyHundredMeters
@@ -62,16 +65,25 @@ class DealerTableViewController: UITableViewController, CLLocationManagerDelegat
         
     }
 
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("DealerTableViewCellReuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
 
         // Configure the cell...
         if let myCell = cell as? DealerTableViewCell {
-            myCell.cellTitle.text = Dealers?.Dealers[indexPath.row].title
+            //println(Dealers?.Dealers[indexPath.row].title)
+            myCell.nameLabel.text = Dealers?.Dealers[indexPath.row].title
+            myCell.addressLabel.text = Dealers?.Dealers[indexPath.row].address1
+            if let city = Dealers?.Dealers[indexPath.row].city {
+                if let state = Dealers?.Dealers[indexPath.row].state {
+                    if let zip = Dealers?.Dealers[indexPath.row].zip {
+                        myCell.cityLabel.text = "\(city), \(state) \(zip)"
+                    }
+                }
+            }
+
             if let distance = Dealers?.Dealers[indexPath.row].distance {
-                myCell.detailTextLabel!.text = "\(distance) Miles"
+                myCell.distanceLabel.text = "\(distance) Miles"
             }
 
             return myCell
@@ -95,16 +107,24 @@ class DealerTableViewController: UITableViewController, CLLocationManagerDelegat
                 
                 NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil, userInfo: defaultZip)
             }else{
+                self.showAlertToUser("No Dealers found")
                 println("No placemarks found.")
             }
         })
     }
-    
+    //Notification "load" will call this function
     func loadDealers(param: NSNotification){
 
         if let paramZip = param.userInfo as? Dictionary<String, String!> {
             self.zip = paramZip["Zip"]!
+            
+            if count(self.zip) == 5 {
             Dealers = DealerLoader(url:"http://\(self.domain)/api/v1/dealers/\(self.zip)")
+            }
+            else {
+                self.showAlertToUser("Invalid zip entered")
+                println("Invalid zip")
+            }
             
         } else {
             println("No zip found in Notification")
@@ -117,8 +137,10 @@ class DealerTableViewController: UITableViewController, CLLocationManagerDelegat
     func reloadTable() {
         if Dealers != nil {
             self.tableView.reloadData()
+            activitySpinner.stopAnimating()
 
         } else {
+            showAlertToUser("No Dealers found")
             println("No Dealers Loaded" )
         }
     }
@@ -150,7 +172,7 @@ class DealerTableViewController: UITableViewController, CLLocationManagerDelegat
         return UIModalPresentationStyle.None
     }
     
-    // MARK: - Navigation
+    // MARK: - App Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -165,5 +187,16 @@ class DealerTableViewController: UITableViewController, CLLocationManagerDelegat
         }
     }
     
+    // MARK: --Alerts
+    func showAlertToUser(alert:String) {
+        
+        let alertController = UIAlertController(title: "ADC Dealer Locator", message:
+            alert, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+        dispatch_async(dispatch_get_main_queue()) {
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+    }
 
 }
