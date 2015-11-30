@@ -17,50 +17,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U6f-vl-64o">
-                                <rect key="frame" x="0.0" y="66" width="600" height="534"/>
-                                <subviews>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MMl-i3-yKe">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="534"/>
-                                        <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="534" id="EkH-Nj-c1g"/>
-                                            <constraint firstAttribute="width" constant="600" id="ce5-IG-jiG"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="EkH-Nj-c1g"/>
-                                                <exclude reference="ce5-IG-jiG"/>
-                                            </mask>
-                                        </variation>
-                                    </mapView>
-                                </subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MMl-i3-yKe">
+                                <rect key="frame" x="16" y="64" width="568" height="536"/>
                                 <animations/>
-                                <color key="backgroundColor" red="1" green="0.9513457240401425" blue="0.87287412662943997" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="MMl-i3-yKe" firstAttribute="centerX" secondItem="U6f-vl-64o" secondAttribute="centerX" id="5gb-Ng-iJe"/>
-                                    <constraint firstItem="MMl-i3-yKe" firstAttribute="leading" secondItem="U6f-vl-64o" secondAttribute="leading" id="B2Q-RV-bHR"/>
-                                    <constraint firstItem="MMl-i3-yKe" firstAttribute="top" secondItem="U6f-vl-64o" secondAttribute="top" id="IpU-C3-gUK"/>
-                                    <constraint firstItem="MMl-i3-yKe" firstAttribute="leading" secondItem="U6f-vl-64o" secondAttribute="leading" id="KX2-Qo-tqO"/>
-                                    <constraint firstItem="MMl-i3-yKe" firstAttribute="top" secondItem="U6f-vl-64o" secondAttribute="top" id="M3y-XC-XcU"/>
-                                    <constraint firstItem="MMl-i3-yKe" firstAttribute="top" secondItem="U6f-vl-64o" secondAttribute="top" id="Mr1-Hf-tf5"/>
-                                    <constraint firstItem="MMl-i3-yKe" firstAttribute="top" secondItem="U6f-vl-64o" secondAttribute="top" id="YS6-1w-akb"/>
-                                    <constraint firstItem="MMl-i3-yKe" firstAttribute="top" secondItem="U6f-vl-64o" secondAttribute="top" id="hju-0K-bhr"/>
-                                    <constraint firstItem="MMl-i3-yKe" firstAttribute="leading" secondItem="U6f-vl-64o" secondAttribute="leading" id="iLY-dY-rah"/>
-                                    <constraint firstAttribute="bottom" secondItem="MMl-i3-yKe" secondAttribute="bottom" id="laS-YB-IxY"/>
-                                    <constraint firstItem="MMl-i3-yKe" firstAttribute="leading" secondItem="U6f-vl-64o" secondAttribute="leading" id="mDV-W9-F4A"/>
-                                    <constraint firstAttribute="bottom" secondItem="MMl-i3-yKe" secondAttribute="bottom" id="pXX-QB-KCA"/>
-                                    <constraint firstAttribute="trailing" secondItem="MMl-i3-yKe" secondAttribute="trailing" id="qIi-VV-ojc"/>
-                                    <constraint firstItem="MMl-i3-yKe" firstAttribute="leading" secondItem="U6f-vl-64o" secondAttribute="leading" id="rpl-S6-ej1"/>
-                                    <constraint firstAttribute="trailing" secondItem="MMl-i3-yKe" secondAttribute="trailing" id="t9O-kF-QT1"/>
-                                    <constraint firstAttribute="bottom" secondItem="MMl-i3-yKe" secondAttribute="bottom" id="tbB-TZ-FM5"/>
-                                    <constraint firstItem="MMl-i3-yKe" firstAttribute="centerY" secondItem="U6f-vl-64o" secondAttribute="centerY" id="wnZ-xc-1Ly"/>
-                                    <constraint firstAttribute="trailing" secondItem="MMl-i3-yKe" secondAttribute="trailing" id="xop-Il-5Wz"/>
-                                </constraints>
-                            </view>
+                            </mapView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MMl-i3-yKe" firstAttribute="bottom" secondItem="XkP-S9-yfu" secondAttribute="top" id="5Df-st-hIF"/>
+                            <constraint firstItem="MMl-i3-yKe" firstAttribute="leading" secondItem="IOr-77-YK9" secondAttribute="leadingMargin" id="8iV-YX-nkk"/>
+                            <constraint firstItem="MMl-i3-yKe" firstAttribute="trailing" secondItem="IOr-77-YK9" secondAttribute="trailingMargin" id="FYW-VW-ME5"/>
+                            <constraint firstItem="MMl-i3-yKe" firstAttribute="leading" secondItem="IOr-77-YK9" secondAttribute="leadingMargin" id="Nzq-gX-dlP"/>
+                            <constraint firstItem="MMl-i3-yKe" firstAttribute="trailing" secondItem="IOr-77-YK9" secondAttribute="trailingMargin" id="T12-2T-wlf"/>
+                            <constraint firstItem="MMl-i3-yKe" firstAttribute="top" secondItem="NJc-ya-2Xe" secondAttribute="bottom" id="iDJ-KW-xph"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MMl-i3-yKe" secondAttribute="trailing" id="p0S-5K-XJO"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="8iV-YX-nkk"/>
+                                <exclude reference="T12-2T-wlf"/>
+                                <exclude reference="p0S-5K-XJO"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="MMl-i3-yKe" id="98I-27-3gp"/>

@@ -135,7 +135,7 @@ class DealerTableViewController: UITableViewController, CLLocationManagerDelegat
     }
     
     func reloadTable() {
-        if Dealers != nil {
+        if Dealers != nil && Dealers!.Dealers.count > 0{
             self.tableView.reloadData()
             activitySpinner.stopAnimating()
 

@@ -10,7 +10,7 @@ import Foundation
 import MapKit
 import AddressBook
 
-class Dealer: NSObject{
+class Dealer: NSObject, MKAnnotation {
     
     let title : String!
     let subtitle: String!
@@ -23,6 +23,7 @@ class Dealer: NSObject{
     let lat : Double?
     let long : Double?
     var distance : Double?
+    var coordinate : CLLocationCoordinate2D
 
     
     init(Name : String, address1 : String, address2 : String?, address3 : String?, city : String, state : String, zip : String, lat : Double, long : Double, distance : Double) {
@@ -48,17 +49,25 @@ class Dealer: NSObject{
         self.lat = lat
         self.long = long
         self.distance = distance
-        //self.subtitle = "/* \(address1) \n \(city), \(state)  \(zip) \n About \(distance) Miles away."
+        self.coordinate = CLLocationCoordinate2D(latitude: self.lat!, longitude: self.long!)
         self.subtitle = "About \(distance) Miles away."
+        super.init()
     }
     /*
     func mapItem() -> MKMapItem {
-        let addressDictionary = [String(kABPersonAddressStreetKey): subtitle]
-        let placemark = MKPlacemark(coordinate: coordinate!, addressDictionary: addressDictionary)
+        let addressDictionary =
+        [kABPersonAddressStreetKey as NSString : address1!,
+            kABPersonAddressCityKey : city!,
+            kABPersonAddressStateKey : state!,
+            kABPersonAddressZIPKey : zip!] as [NSObject : AnyObject]
+        
+        let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: addressDictionary )
+        //let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: addressDictionary)
         
         let mapItem = MKMapItem(placemark: placemark)
         mapItem.name = title
         
         return mapItem
-    } */
+    }
+*/
 }
