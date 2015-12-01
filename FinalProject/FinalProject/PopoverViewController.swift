@@ -25,13 +25,13 @@ class PopoverViewController: UIViewController {
     }
     
     @IBAction func updateZip(sender: AnyObject) {
-        
+        //pass our new zip and post it to the notification center.
         var newZip = ["Zip":zipField.text]
         NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil, userInfo: newZip)
        
         var tmpController :UIViewController! = self.presentingViewController;
+        //close the popover
         self.dismissViewControllerAnimated(false, completion: {()->Void in
-            //println("done");
             tmpController.dismissViewControllerAnimated(false, completion: nil);
         });
 

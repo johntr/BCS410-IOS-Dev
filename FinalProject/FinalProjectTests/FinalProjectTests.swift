@@ -28,9 +28,9 @@ class FinalProjectTests: XCTestCase {
         XCTAssert(true, "Pass")
     }
     
+    //test to see if there are any dealers loaded at a location we know there are dealers.
     func testDealerLoad() {
         self.Dealers = DealerLoader(url:"http://app-adc.gotpantheon.com/api/v1/dealers/11788")
-        //numDealers = Dealers.count > 0 ? true : false
         
         XCTAssert(Dealers?.Dealers.count > 0, "Pass")
         

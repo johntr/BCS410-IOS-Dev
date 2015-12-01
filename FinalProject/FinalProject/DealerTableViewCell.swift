@@ -9,7 +9,7 @@
 import UIKit
 
 class DealerTableViewCell: UITableViewCell {
-
+    //cell labels
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!

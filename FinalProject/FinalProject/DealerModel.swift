@@ -25,7 +25,7 @@ class Dealer: NSObject, MKAnnotation {
     var distance : Double?
     var coordinate : CLLocationCoordinate2D
 
-    
+    //main contructor load all data into structure
     init(Name : String, address1 : String, address2 : String?, address3 : String?, city : String, state : String, zip : String, lat : Double, long : Double, distance : Double) {
         
         self.title = Name
@@ -49,25 +49,10 @@ class Dealer: NSObject, MKAnnotation {
         self.lat = lat
         self.long = long
         self.distance = distance
+        //setup coordinate point
         self.coordinate = CLLocationCoordinate2D(latitude: self.lat!, longitude: self.long!)
+        //setup subtitle to show miles away.
         self.subtitle = "About \(distance) Miles away."
         super.init()
     }
-    /*
-    func mapItem() -> MKMapItem {
-        let addressDictionary =
-        [kABPersonAddressStreetKey as NSString : address1!,
-            kABPersonAddressCityKey : city!,
-            kABPersonAddressStateKey : state!,
-            kABPersonAddressZIPKey : zip!] as [NSObject : AnyObject]
-        
-        let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: addressDictionary )
-        //let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: addressDictionary)
-        
-        let mapItem = MKMapItem(placemark: placemark)
-        mapItem.name = title
-        
-        return mapItem
-    }
-*/
 }
