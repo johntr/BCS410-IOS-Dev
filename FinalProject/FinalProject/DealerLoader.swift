@@ -17,12 +17,12 @@ class DealerLoader {
     var data : JSON?
     
     
-    init(url : String) {
+    init(url : NSURL) {
         
         self.getDealerData(url)
         
         //check if we get data from our url
-        if data != nil {
+        if self.data != nil {
             self.parseDealers()
         }
         else {
@@ -31,11 +31,11 @@ class DealerLoader {
         
     }
     //get dealer data from endpoint
-    private func getDealerData(url : String) {
+    private func getDealerData(url : NSURL) {
         //load data from url param
-        var endpoint = NSURL(string: url)
+        //var endpoint = NSURL(string: url)
 
-        var data = NSData(contentsOfURL : endpoint!)
+        var data = NSData(contentsOfURL : url)
         //Make it JSON data and pass it to SwiftyJSON to work with
         if let json: NSDictionary = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSDictionary {
             let data = JSON(json)

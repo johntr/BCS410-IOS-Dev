@@ -117,7 +117,8 @@ class DealerTableViewController: UITableViewController, CLLocationManagerDelegat
             self.zip = paramZip["Zip"]! //get our zip from notification to update.
             
             if count(self.zip) == 5 {
-            Dealers = DealerLoader(url:"http://\(self.domain)/api/v1/dealers/\(self.zip)")  //load dealer endpoint
+                var rawURL = createURL()    //Create a NSURL using NSURLComponents
+                Dealers = DealerLoader(url: rawURL) //load dealer endpoint
             }
             else {
                 self.showAlertToUser("Invalid zip entered")
@@ -131,6 +132,18 @@ class DealerTableViewController: UITableViewController, CLLocationManagerDelegat
         self.reloadTable()
         
     }
+    //formates an NSURL using NSURL Components
+    func createURL()->NSURL {
+        
+        var urlComponents = NSURLComponents()
+        urlComponents.scheme = "http"
+        urlComponents.host = self.domain
+        urlComponents.path = "/api/v1/dealers/\(self.zip)"
+        let url = urlComponents.URL!
+        
+        return url
+    }
+    
     //func to reload the table
     func reloadTable() {
         if Dealers != nil && Dealers!.Dealers.count > 0{

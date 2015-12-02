@@ -30,7 +30,8 @@ class FinalProjectTests: XCTestCase {
     
     //test to see if there are any dealers loaded at a location we know there are dealers.
     func testDealerLoad() {
-        self.Dealers = DealerLoader(url:"http://app-adc.gotpantheon.com/api/v1/dealers/11788")
+        let testUrl = NSURL(string: "http://app-adc.gotpantheon.com/api/v1/dealers/11788")      //Creating these urls the dirty way since they are for testing. 
+        self.Dealers = DealerLoader(url: testUrl!)
         
         XCTAssert(Dealers?.Dealers.count > 0, "Pass")
         
@@ -39,7 +40,8 @@ class FinalProjectTests: XCTestCase {
         // This is an example of a performance test case.
         self.measureBlock() {
             // Put the code you want to measure the time of here.
-            self.Dealers = DealerLoader(url:"http://app-adc.gotpantheon.com/api/v1/dealers/11788")
+            let testUrl = NSURL(string: "http://app-adc.gotpantheon.com/api/v1/dealers/11788")
+            self.Dealers = DealerLoader(url: testUrl!)
         }
     }
     
